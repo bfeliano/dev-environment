@@ -66,7 +66,14 @@ Additionally, I recommend setting the **File Icon Theme** to `Seti` for a better
 
 
 ###### Settings
-`Format on Save` set to **true**, to format code every time you save it.  
+`Format on Save` set to **true**, to automatically format code every time you save a file. However, ignoring markdown files by adding the following to `settings.json`.  
+``` json
+"editor.formatOnSave": true,
+"[markdown]": {
+        "editor.formatOnSave": false
+    },
+```
+
 `Explorer: Auto Reveal` set to **false**, to prevent directories from auto-expanding when opening files.  
 
 # WORK IN PROGRESS!!
