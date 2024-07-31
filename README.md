@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/bfeliano/dev-environment">
-    <img src="config/logo.png" width="80" height="80">
+    <img src="config/logo.png" width="80" height="80" alt="Repo Logo">
   </a>
 
   <h3 align="center">Development Environment Repo</h3>

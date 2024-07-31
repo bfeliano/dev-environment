@@ -1,5 +1,8 @@
 {
-    "no-duplicate-heading": {
-      "siblings_only": true
-    }
+  "no-duplicate-heading": {
+    "siblings_only": true
+  },
+  "no-inline-html": {
+    "allowed_elements": ["a", "br", "div", "img", "h3", "p"]
   }
+}
