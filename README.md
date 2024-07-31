@@ -1,7 +1,5 @@
 # Development Environment Repo
 
-<a id="readme-top"></a>
-<br />
 <div align="center">
   <a href="https://github.com/bfeliano/dev-environment">
     <img src="config/logo.png" width="80" height="80" alt="Repo Logo">
