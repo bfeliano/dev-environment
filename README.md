@@ -1,16 +1,11 @@
 # Development Environment Repo
 
 <a id="readme-top"></a>
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/bfeliano/dev-environment">
     <img src="config/logo.png" width="80" height="80" alt="Repo Logo">
   </a>
-
-  <h3 align="center">Development Environment Repo</h3>
-
   <p align="center">
     This repository contains instructions for setting up a Windows OS for
     development purposes.
