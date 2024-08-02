@@ -1,16 +1,9 @@
 # Development Environment Repo
 
-<a id="readme-top"></a>
-
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://github.com/bfeliano/dev-environment">
     <img src="config/logo.png" width="80" height="80" alt="Repo Logo">
   </a>
-
-  <h3 align="center">Development Environment Repo</h3>
-
   <p align="center">
     This repository contains instructions for setting up a Windows OS for
     development purposes.
@@ -101,11 +94,17 @@ auto-expanding when opening files.
 
 **Note:** The commands in this section should be executed from a WSL terminal.  
 
+* **AWS CLI:** Refer to the [official documentation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html),
+and follow the steps for Linux.
+
+* **Terraform:** Refer to the [official documentation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli),
+and follow the steps for Linux > Ubuntu/Debian.
+
 * **NodeJS:** `sudo apt install nodejs`  
 Node.js  executes JavaScript code outside a web browser. Node.js lets
 developers use JavaScript to write cli tools and for server-side scripting.  
 
-* **Live Server** `sudo npm install live-server -g`  
+* **Live Server:** `sudo npm install live-server -g`  
 This is a little development server with live reload capability. Having the
 page reload automatically after changes to files can accelerate development.  
 After installed you can run using the command `live-server`
