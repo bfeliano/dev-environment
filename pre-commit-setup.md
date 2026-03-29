@@ -28,8 +28,7 @@ Execute os seguintes comandos para configurar o ambiente local:
 ```bash
 pip install detect-secrets
 pip install pre-commit
-curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh \
-  | bash
+curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
 ```
 
 > O comando acima instala o **tflint**, usado na validação de Terraform.
