@@ -4,5 +4,8 @@
   },
   "no-inline-html": {
     "allowed_elements": ["a", "br", "div", "img", "h3", "p"]
+  },
+  "MD013": {
+    "code_blocks": false
   }
 }
