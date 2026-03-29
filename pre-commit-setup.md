@@ -11,16 +11,16 @@ Esta documentação explica como utilizar **pre-commit hooks** para:
 
 ### 🔗 Documentação de Referência
 
-* [**Yelp/detect-secrets**](https://github.com/Yelp/detect-secrets) – 
+* [**Yelp/detect-secrets**](https://github.com/Yelp/detect-secrets) –
   ferramenta para detectar e prevenir segredos em código
 * [**pre-commit-terraform**](https://github.com/antonbabenko/pre-commit-terraform)
   – hooks relacionados ao Terraform
-* [**pre-commit**](https://github.com/pre-commit/pre-commit) – 
+* [**pre-commit**](https://github.com/pre-commit/pre-commit) –
   framework para gerenciar hooks multi-linguagem
 
 ## 🚀 Instalação
 
-> **Observação:** Instruções válidas para ambientes **Linux/WSL**. 
+> **Observação:** Instruções válidas para ambientes **Linux/WSL**.
 > Para outros sistemas operacionais, consulte sua documentação.
 
 Execute os seguintes comandos para configurar o ambiente local:
@@ -28,7 +28,8 @@ Execute os seguintes comandos para configurar o ambiente local:
 ```bash
 pip install detect-secrets
 pip install pre-commit
-curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh \
+  | bash
 ```
 
 > O comando acima instala o **tflint**, usado na validação de Terraform.
@@ -37,7 +38,7 @@ curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/instal
 
 1. Clone o repositório desejado
 2. Acesse a pasta do repositório
-3. Crie os arquivos `.pre-commit-config.yaml` e `scan/.tflint.hcl` 
+3. Crie os arquivos `.pre-commit-config.yaml` e `scan/.tflint.hcl`
    utilizando os exemplos abaixo
 4. Instale os hooks:
 
