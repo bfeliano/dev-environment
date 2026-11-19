@@ -1,112 +1,199 @@
-# Development Environment Repo
+# Ambiente de desenvolvimento
 
 <div align="center">
   <a href="https://github.com/bfeliano/dev-environment">
     <img src="config/logo.png" width="80" height="80" alt="Repo Logo">
   </a>
   <p align="center">
-    This repository contains instructions for setting up a Windows OS for
-    development purposes.
+    Este guia reúne os passos para configurar um computador Windows para
+    desenvolvimento com Ubuntu no WSL.
   </p>
 </div>
 
-## About The Project
+## Sobre o Projeto
 
-I created this repository to provide a centralized guide for setting up a
-Windows OS for development purposes.  
-These instructions reflect my personal configuration choices and preferences.
-Please note that I am not responsible for any issues that may arise from
-downloading and installing the recommended software. You can follow these
-instructions at your own risk. Make sure you review and understand each step
-before proceeding.  
+Criei este repositório para disponibilizar um guia centralizado de configuração
+do Windows para ambientes de desenvolvimento.
 
-## Getting Started
+As instruções refletem minhas preferências e configurações pessoais.
 
-Here you can find the software, tools and configurations I use, with a focus on
-WSL (Windows Subsystem for Linux).  
+Não me responsabilizo por eventuais problemas decorrentes do download ou da
+instalação dos softwares recomendados. Siga estas instruções por sua conta e
+risco e certifique-se de revisar e compreender cada etapa antes de prosseguir.
 
-### Windows Configuration
+## Primeiros Passos
 
-#### Install WSL
+Aqui você encontrará os softwares, ferramentas e configurações que utilizo,
+com foco no WSL (Windows Subsystem for Linux).
 
-The easiest way to install WSL is by running the command below in
-Command Prompt:  
+### Configuração do Windows
 
-```sh
+#### Instalar o WSL
+
+Para instalar uma versão específica do Ubuntu, execute:
+
+```powershell
 wsl --install -d Ubuntu-24.04
 ```
 
-You can also search for different Linux distributions available for WSL using
-the command below:  
+Você também pode consultar outras distribuições Linux disponíveis para
+instalação no WSL utilizando o comando abaixo:
 
-```sh
+```powershell
 wsl --list --online
 ```
 
-#### Softwares to Download
+Recomendo especificar a versão do Ubuntu durante a instalação para garantir
+um ambiente de desenvolvimento consistente e evitar mudanças inesperadas
+na versão instalada.
 
-Use Ctrl + Click to open the websites in new tabs.  
+#### Instalar os programas
+
+Use Ctrl + Clique para abrir os sites em novas abas.
 
 * [Brave Browser](https://brave.com/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download)
 
-##### VS Code Setup
+### Configurar o VS Code
 
-###### Theme
+1. Instale o tema [Monokai Pro](https://marketplace.visualstudio.com/items?itemName=monokai.theme-monokai-pro-vscode)
+e selecione-o em `Preferences: Color Theme`.
+2. Selecione o tema de ícones **Seti** em `Preferences: File Icon Theme`.
+3. Instale as extensões:
+   * [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+   * [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+   * [HashiCorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
+   * [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+   * [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+4. Abra `Preferences: Open User Settings (JSON)` e use estas configurações:
 
-I like to use the `Monokai Pro` theme in VS Code. You can download it from
-Visual Studio Extensions or directly from the
-[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=monokai.theme-monokai-pro-vscode).
-To install and apply it, navigate to **Settings > Themes > Color Theme**.  
-Additionally, I recommend setting the **File Icon Theme** to `Seti` for a
-better visual experience.  
-
-###### Extensions
-
-[WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl):
-This is required to be able to launch WSL in VS Code.  
-[GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens):
-Enhances your Git experience.  
-[Hashicorp Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform):
-Provides syntax highlighting and autocompletion for Terraform.  
-[GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot):
-Assists in writing code faster and smarter.  
-
-###### Settings
-
-`Format on Save` set to **true**, to automatically format code every time you
-save a file. However, ignoring markdown files by adding the following to
-`settings.json`.  
-
-``` json
-"editor.formatOnSave": true,
-"[markdown]": {
+```json
+{
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "[markdown]": {
         "editor.formatOnSave": false
     },
+    "explorer.autoReveal": false,
+    "workbench.colorTheme": "Monokai Pro",
+    "claudeCode.preferredLocation": "panel",
+    "extensions.supportAgentsWindow": {
+        "monokai.theme-monokai-pro-vscode": true
+    },
+    "terminal.integrated.initialHint": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ]
+}
 ```
 
-`Explorer: Auto Reveal` set to **false**, to prevent directories from
-auto-expanding when opening files.  
+### Configuração do Ubuntu no WSL
 
-### WSL Configuration
+**Execute os comandos abaixo no terminal do Ubuntu**, exceto quando estiver
+indicado PowerShell.
 
-#### Packages Installation
+### Atualizar o sistema
 
-**Note:** The commands in this section should be executed from a WSL terminal.  
+```bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y git curl ca-certificates unzip zsh
+```
 
-* **AWS CLI:** Refer to the [official documentation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html),
-and follow the steps for Linux.
+### Definir o Zsh como padrão
 
-* **Terraform:** Refer to the [official documentation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli),
-and follow the steps for Linux > Ubuntu/Debian.
+```bash
+sudo chsh -s "$(command -v zsh)" "$USER"
+getent passwd "$USER"
+```
 
-* **NodeJS:** `sudo apt install nodejs`  
-Node.js  executes JavaScript code outside a web browser. Node.js lets
-developers use JavaScript to write cli tools and for server-side scripting.  
+O resultado de `getent` deve terminar em `/usr/bin/zsh` ou `/bin/zsh`.
 
-* **Live Server:** `sudo npm install live-server -g`  
-This is a little development server with live reload capability. Having the
-page reload automatically after changes to files can accelerate development.  
-After installed you can run using the command `live-server`
+**É necessário encerrar e reiniciar o Ubuntu para aplicar a mudança.**
+Feche o terminal do Ubuntu e execute no **PowerShell**:
 
-### WORK IN PROGRESS!! - This is not yet the final version of this document
+```powershell
+wsl --terminate Ubuntu-24.04
+wsl
+```
+
+Confirme no terminal do Ubuntu:
+
+```bash
+ps -p $$ -o comm=
+```
+
+O resultado deve ser `zsh`.
+
+### Instalar o Oh My Zsh
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+Configure os plugins `git` e `kubectl` no arquivo `~/.zshrc`:
+
+```bash
+sed -i 's/^plugins=(.*)/plugins=(git kubectl)/' ~/.zshrc
+source ~/.zshrc
+```
+
+A configuração deve conter:
+
+```zsh
+plugins=(git kubectl)
+```
+
+### Instalar o kubectl
+
+Os comandos abaixo instalam a versão estável do cliente Kubernetes para
+a arquitetura do Ubuntu:
+
+```bash
+KUBECTL_VERSION="$(curl -fsSL https://dl.k8s.io/release/stable.txt)"
+KUBECTL_ARCH="$(dpkg --print-architecture)"
+
+curl -fLO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl"
+curl -fLO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl.sha256"
+
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+rm kubectl kubectl.sha256
+kubectl version --client
+```
+
+A verificação de integridade deve mostrar `kubectl: OK`. Para acessar clusters,
+configure as credenciais no `~/.kube/config`. A versão do `kubectl` deve estar
+no máximo uma versão secundária acima ou abaixo da versão do cluster.
+
+[Documentação oficial do kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/).
+
+## 3. Outras ferramentas no WSL
+
+### AWS CLI
+
+Instale a AWS CLI v2 seguindo a [documentação oficial para Linux](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+
+```bash
+aws --version
+```
+
+### Terraform
+
+Instale o Terraform seguindo a [documentação oficial para Ubuntu/Debian](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
+
+```bash
+terraform version
+```
+
+### Node.js e npm
+
+```bash
+sudo apt install -y nodejs npm
+node --version
+npm --version
+```
+
+### EM DESENVOLVIMENTO! - Esta ainda não é a versão final deste documento
