@@ -2,9 +2,11 @@
 
 ## Objetivo
 
-Remover um commit enviado por engano para uma branch que já possui um Merge Request aberto no GitLab.
+Remover um commit enviado por engano para uma branch que já possui um
+Merge Request aberto no GitLab.
 
-> O Merge Request representa a diferença entre a branch de origem e a branch de destino. Ao remover o commit da branch remota, o GitLab atualiza o MR automaticamente.
+> O Merge Request representa a diferença entre a branch de origem e a branch
+de destino. Ao remover o commit da branch remota, o GitLab atualiza o MR automaticamente.
 
 ## Pré-requisitos
 
@@ -70,7 +72,8 @@ O GitLab atualizará o Merge Request automaticamente.
 
 ## Cenário B: o commit incorreto não é o último
 
-Identifique quantos commits precisam aparecer no rebase. Por exemplo, para revisar os últimos cinco commits:
+Identifique quantos commits precisam aparecer no rebase. Por exemplo,
+para revisar os últimos cinco commits:
 
 ```bash
 git rebase -i HEAD~5
@@ -107,7 +110,8 @@ git revert <hash-do-commit>
 git push origin HEAD
 ```
 
-Isso cria um novo commit que desfaz as alterações. O commit original continuará aparecendo no histórico e no MR.
+Isso cria um novo commit que desfaz as alterações. O commit original continuará
+aparecendo no histórico e no MR.
 
 ## Validação
 
@@ -155,10 +159,13 @@ git push --force-with-lease origin HEAD
 
 ## Cuidados importantes
 
-- Use `--force-with-lease`, não `--force`. Ele evita sobrescrever mudanças remotas que não existem localmente.
-- Não execute `git reset --hard` com arquivos locais não salvos. Esse comando descarta alterações não commitadas.
+- Use `--force-with-lease`, não `--force`. Ele evita sobrescrever mudanças
+remotas que não existem localmente.
+- Não execute `git reset --hard` com arquivos locais não salvos. Esse comando
+descarta alterações não commitadas.
 - Em branch compartilhada, avise os demais colaboradores antes de reescrever o histórico.
-- Se a branch for protegida no GitLab, o `force push` pode estar bloqueado. Nesse caso, use `git revert` ou ajuste a branch conforme o processo do projeto.
+- Se a branch for protegida no GitLab, o `force push` pode estar bloqueado.
+Nesse caso, use `git revert` ou ajuste a branch conforme o processo do projeto.
 
 ## Resumo rápido
 
