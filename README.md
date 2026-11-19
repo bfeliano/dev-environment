@@ -176,6 +176,16 @@ no máximo uma versão secundária acima ou abaixo da versão do cluster.
 
 Instale a AWS CLI v2 seguindo a [documentação oficial para Linux](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
+Após a instalação, adicione o diretório do AWS CLI ao `PATH` para garantir
+que o comando `aws` seja reconhecido pelo terminal.
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+Verifique se o AWS CLI foi instalado e está funcionando corretamente:
+
 ```bash
 aws --version
 ```
